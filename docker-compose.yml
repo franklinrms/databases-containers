@@ -1,0 +1,35 @@
+version: '3.9'
+services:
+  mysql:
+    image: mysql
+    container_name: mysql
+    platform: linux/x86_64
+    ports: 
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: dev
+    restart: 'always'
+    volumes: 
+      - .data/mysql:/var/lib/mysql
+
+  mongo:
+    image: mongo
+    container_name: mongo
+    platform: linux/x86_64
+    ports: 
+      - 27017:27017
+    restart: 'always'
+    volumes: 
+      - .data/mongo:/data/db
+
+  postgres:
+    image: postgres
+    container_name: postgres
+    platform: linux/x86_64
+    ports: 
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: dev
+    restart: 'always'
+    volumes: 
+      - .data/mongo:/var/lib/postgresql/data
